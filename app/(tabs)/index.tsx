@@ -1,14 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
+import { Text, View } from "react-native";
+import data from "@/assets/data/dummy";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+const summaryData = data.summaryData;
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text style={styles.title}>Welcome Back User</Text>
+      <View style={styles.card}>
+        <Text className="text-white">{summaryData.netBalance}</Text>
+      </View>
+      <View style={styles.transactionsContainer}>
+        <Text style={styles.title}> Transactions</Text>
+      </View>
     </View>
   );
 }
@@ -16,16 +21,27 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: "center",
+    // justifyContent: "center",
+    padding: 10,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 25,
+    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
+  },
+  card: {
+    backgroundColor: "blue",
+    width: "100%",
+    height: "35%",
+    borderRadius: 20,
+    marginTop: 20,
+  },
+  transactionsContainer: {
+    marginTop: 20,
   },
 });
