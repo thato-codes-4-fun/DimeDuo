@@ -56,4 +56,9 @@ const spendingBreakdown = [
   { category: "Entertainment", amount: 300.0 },
 ];
 
-export default { spendingBreakdown, summaryData };
+export default {
+  spendingBreakdown,
+  summaryData,
+  recentTransactions,
+  savingsGoals,
+};

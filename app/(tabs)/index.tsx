@@ -1,18 +1,38 @@
 import { StyleSheet } from "react-native";
 import { Text, View } from "react-native";
 import data from "@/assets/data/dummy";
+import { FlatList } from "react-native";
 
 const summaryData = data.summaryData;
+const transactions = data.recentTransactions;
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Back User</Text>
-      <View style={styles.card}>
-        <Text className="text-white">{summaryData.netBalance}</Text>
+      <View className="p-8 bg-blue-400" style={styles.card}>
+        <Text className="text-white  text-bold text-lg">
+          Net Balance: R{summaryData.netBalance}
+        </Text>
+        <Text className="text-white  text-bold text-lg">
+          Current Balance: R{summaryData.remainingBudget}
+        </Text>
+        <Text className="text-white  text-bold text-lg">
+          Total Expenses: R{summaryData.totalExpenses}
+        </Text>
+        <Text className="text-white  text-bold text-lg">
+          Savings Progress: {summaryData.savingsProgress}%
+        </Text>
+      </View>
+      <View style={styles.transactionsContainer}>
+        <Text style={styles.title}>Savings Overview</Text>
       </View>
       <View style={styles.transactionsContainer}>
         <Text style={styles.title}> Transactions</Text>
+        <FlatList
+          data={transactions}
+          renderItem={({ item }) => <Text>{item.amount}</Text>}
+        />
       </View>
     </View>
   );
@@ -29,13 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
   card: {
-    backgroundColor: "blue",
     width: "100%",
     height: "35%",
     borderRadius: 20,
